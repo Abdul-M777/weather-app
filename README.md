@@ -1,36 +1,119 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌦️ Weather App
 
-## Getting Started
+A responsive weather dashboard built with **Next.js**, **TypeScript**, and **Tailwind CSS**. This app fetches and displays real-time weather data, including current conditions and a 6-day forecast, using the OpenWeatherMap API.
 
-First, run the development server:
+---
+
+## ✨ Features
+
+- 🔍 **Search for any city** to see current weather and forecast
+- 📊 **Interactive temperature chart**
+- 🌡️ Toggle between **Celsius and Fahrenheit**
+- 🌇 See sunrise/sunset, humidity, wind speed, and more
+- 📱 Responsive UI using Tailwind CSS
+- 🔁 Automatically refetches weather data when location changes
+
+---
+
+## 🧠 Tech Stack
+
+- **Next.js** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **Jotai** (state management)
+- **React Query** (data fetching & caching)
+- **date-fns** (date formatting)
+- **OpenWeatherMap API**
+
+---
+
+## 🧪 Functionality Overview
+
+This app consists of one main page:
+
+- The main weather dashboard:
+  - Fetches weather data using a custom hook `useWeatherForecast`
+  - Displays:
+    - Today's temperature with chart
+    - Weather icon and description
+    - Wind, visibility, humidity, air pressure
+    - Sunrise and sunset time
+    - A 6-day forecast (daily summary)
+  - Controlled with state for temperature unit (Celsius/Fahrenheit)
+  - Loading and error handling built-in
+
+---
+
+## 🚀 Getting Started
+
+Follow these steps to run the project on your machine:
+
+### 1. Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/Abdul-M777/weather-app.git
+cd weather-app
+
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install Dependencies
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+```
 
-To learn more about Next.js, take a look at the following resources:
+### 3. Add Environment Variables
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Create a .env.local file in the root with your OpenWeatherMap API key:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```ini
 
-## Deploy on Vercel
+NEXT_PUBLIC_OPENWEATHER_API_KEY=your_api_key_here
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
+
+### 4. Run App
+
+```bash
+
+npm run dev
+
+Then open http://localhost:3000 in your browser.
+```
+
+## 🧪 Running Tests
+
+This project uses Jest and React Testing Library.
+
+To run tests:
+
+```bash
+npm run test
+```
+
+Make sure to install test dependencies if you haven't already:
+
+```bash
+npm install --save-dev jest @testing-library/react @testing-library/jest-dom
+```
+
+## 📁 Folder Structure
+
+```bash
+
+/app
+  └── page.tsx           # Main weather dashboard
+  └── hooks/             # Custom hooks like useWeatherForecast
+  └── atoms/             # Jotai atoms for global state
+/components
+  └── WeatherDashboard/  # Weather chart, forecast detail, etc.
+  └── Navbar/            # Search, unit toggle
+  └── Container/         # Reusable layout wrapper
+/utils
+  └── weather/         # Unit conversions
+  └── cn.ts              # Utility for conditional classnames
+
+```
