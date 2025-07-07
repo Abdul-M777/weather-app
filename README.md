@@ -17,7 +17,7 @@ A responsive weather dashboard built with **Next.js**, **TypeScript**, and **Tai
 
 ## 🧠 Tech Stack
 
-- **Next.js** (App Router)
+- **Next.js**
 - **TypeScript**
 - **Tailwind CSS**
 - **Jotai** (state management)
