@@ -1,5 +1,5 @@
 import { useOutsideClick } from "@/app/hooks/useOutsideClick";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 
 // This component renders a suggestion box for displaying search suggestions
 // It allows users to click on suggestions and handles outside clicks to close the box

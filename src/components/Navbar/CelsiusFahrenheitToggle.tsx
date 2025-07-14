@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // This component provides a toggle between Celsius and Fahrenheit units
 // It allows users to switch between the two temperature scales for displaying weather data

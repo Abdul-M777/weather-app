@@ -89,3 +89,13 @@ export type WeatherCurrentResult = {
     speed: number;
   };
 };
+export interface CityApiItem {
+  name: string;
+  sys: {
+    country: string;
+  };
+  coord: {
+    lat: number;
+    lon: number;
+  };
+}

@@ -1,6 +1,5 @@
 "use client";
 
-import { color } from "framer-motion";
 import {
   LineChart,
   Line,

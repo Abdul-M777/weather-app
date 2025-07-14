@@ -1,5 +1,4 @@
 import { useState } from "react";
-import axios from "axios";
 import { useAtom } from "jotai";
 import { loadingCityAtom, placeAtom } from "@/app/atoms/atom";
 import { fetchWeatherByCoords, searchCity } from "@/lib/api/weather";
@@ -12,8 +11,8 @@ export function useSearchCity() {
 
   // Atoms for global state management
   // These atoms are used to manage the state of the selected place and loading status
-  const [place, setPlace] = useAtom(placeAtom);
-  const [loadingCity, setLoadingCity] = useAtom(loadingCityAtom);
+  const [, setPlace] = useAtom(placeAtom);
+  const [, setLoadingCity] = useAtom(loadingCityAtom);
 
   // Input handler
   async function handleInputChange(value: string) {

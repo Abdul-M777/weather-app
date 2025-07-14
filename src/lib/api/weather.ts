@@ -4,6 +4,7 @@ import type {
   WeatherSearchResult,
   WeatherCurrentResult,
   WeatherForecastResponse,
+  CityApiItem,
 } from "@/app/types/weather";
 
 const API_KEY = process.env.NEXT_PUBLIC_WEATHER_API_KEY;
@@ -38,7 +39,7 @@ export async function searchCity(
       },
     });
 
-    return response.data.list.map((item: any) => ({
+    return response.data.list.map((item: CityApiItem) => ({
       name: item.name,
       country: item.sys.country,
       coord: item.coord,
