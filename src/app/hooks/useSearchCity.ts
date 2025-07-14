@@ -50,6 +50,7 @@ export function useSearchCity() {
 
     setTimeout(() => {
       setPlace(value);
+      localStorage.setItem("place", value);
       setLoadingCity(false);
       setShowSuggestions(false);
     }, 500);
@@ -59,17 +60,33 @@ export function useSearchCity() {
   async function handleCurrentLocation() {
     setLoadingCity(true);
 
-    const result = await fetchWeatherByCoords(56.1518, 10.2064); // Better Developers office coordinates
-
-    if (result?.name) {
-      setTimeout(() => {
-        setCity("");
-        setPlace(result.name);
-        setLoadingCity(false);
-      }, 500);
-    } else {
+    if (!navigator.geolocation) {
+      setError("Geolocation is not supported by this browser.");
       setLoadingCity(false);
+      return;
     }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        const result = await fetchWeatherByCoords(latitude, longitude);
+
+        if (result?.name) {
+          setTimeout(() => {
+            setCity(result.name);
+            setPlace(result.name);
+            localStorage.setItem("place", result.name);
+            setLoadingCity(false);
+          }, 500);
+        } else {
+          setLoadingCity(false);
+        }
+      },
+      (error) => {
+        setError(`Geolocation error: ${error.message}`);
+        setLoadingCity(false);
+      }
+    );
   }
 
   return {
